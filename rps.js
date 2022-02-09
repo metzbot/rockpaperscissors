@@ -1,9 +1,7 @@
 /*Play rock paper scissors with browser console
 Rock beats scissors
 Scissors beats Paper
-Paper beats rock 
-
-Cue up game by writing gamePrompt() in console*/
+Paper beats rock */
 
 //global score variables
 let playerScore = 0;
@@ -55,18 +53,6 @@ function playerScissors(computerSelection) {
     }
 }
 
-
-//prompts user to play game
-/* function gamePrompt() {
-    let choice = prompt("Rock, paper, or scissors?").toLowerCase();
-    if ((choice === "rock") || (choice === "paper") || (choice === "scissors")) {
-        return result = playRound(choice, computerPlay());
-    } else {
-        alert("You entered something other than rock, paper, or scissors. Click OK to try again.");
-        gamePrompt();
-    }
-} */
-
 //plays a single round of rock, paper, scissors
 function playRound(playerSelection, computerSelection) {
     if (checkTie(playerSelection, computerSelection)) {
@@ -98,30 +84,10 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-/* let roundResult;
-const buttons = document.querySelectorAll('button');
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        roundResult = playRound(button.id, computerPlay());
-        const scoreContainer = document.querySelector('score');
-        const content = document.createElement('div');
-        content.classList.add('content');
-        content.textContent = roundResult;
-        scoreContainer.appendChild(content);
-    });
-}); */
-
 const scoreInfo = document.getElementById('scoreInfo');
 const scoreMessage = document.getElementById('scoreMessage');
 const playerScoreDisp = document.getElementById('playerScore');
 const computerScoreDisp = document.getElementById('computerScore');
-
-/* rockBtn.addEventListener('click', () => {
-    result = playRound('rock', computerPlay()); });
-paperBtn.addEventListener('click', () => {
-    result = playRound('paper', computerPlay()); });
-scissorsBtn.addEventListener('click', () => {
-    result = playRound('scissors', computerPlay()); }); */
 
 const btns = document.querySelectorAll('button');
 const content = document.createElement('div');
@@ -139,41 +105,19 @@ btns.forEach((button) => {
             if ( playerScore > computerScore ) {
                 content.textContent = 'Congratulations, you won five rounds!';
             } else { content.textContent = 'You\'re clearly terrible at this game! You lost!' };
+            const restartMsg = document.createElement('h3');
+            restartMsg.classList.add('restartMsg');
+            restartMsg.textContent = 'Want to play again?';
+            scoreMessage.appendChild(restartMsg);
+            const restartBtn = document.createElement('button');
+            restartBtn.classList.add('restartBtn');
+            restartBtn.textContent = 'Play Again';
+            scoreMessage.appendChild(restartBtn);
+            restartBtn.addEventListener('click', () => {
+                playerScoreCount.textContent = `Player:`;
+                compScoreCount.textContent = `Computer:`;
+                content.textContent = '';
+                restartMsg.textContent = '';
+            });
         }
     })});
-
-
-
-/* function game() {
-    for (let step = 0; step < 5; step++) {
-        gamePrompt();
-        console.log(result);
-    }
-} */
-
-//bunch of random junk down here
-// function printEvens() {
-//     for (let i = 0; i <= 10; i++) {
-//         if (i % 2 == 0) {
-//             console.log("even")
-//         } else { console.log(`${i}`)}
-//     }
-// }
-
-
-/* for each i in the interval {
-    check if i has a divisor from 1..i
-    if yes => the value is not a prime
-    if no => the value is a prime, show it
-} */
-
-
-// function printPrimes(n) {
-//     nextPrime:
-//     for (let i = 2; i <= n; i++) {
-//         for (let j = 2; j < i; j++) {
-//             if (i % j == 0) continue nextPrime;
-//         }
-//         console.log(i);
-//     }
-// }
