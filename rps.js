@@ -3,12 +3,6 @@ Rock beats scissors
 Scissors beats Paper
 Paper beats rock */
 
-//global score variables
-let playerScore = 0;
-let computerScore = 0;
-let winner = '';
-let result = '';
-
 //returns random integer from 0 to max
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -84,11 +78,15 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+let playerScore = 0;
+let computerScore = 0;
+let winner = '';
+let result = '';
 const scoreInfo = document.getElementById('scoreInfo');
 const scoreMessage = document.getElementById('scoreMessage');
 const playerScoreDisp = document.getElementById('playerScore');
 const computerScoreDisp = document.getElementById('computerScore');
-
+const container = document.querySelector("body > div");
 const btns = document.querySelectorAll('button');
 const content = document.createElement('div');
 const playerScoreCount = document.getElementById('player');
@@ -105,6 +103,7 @@ btns.forEach((button) => {
             if ( playerScore > computerScore ) {
                 content.textContent = 'Congratulations, you won five rounds!';
             } else { content.textContent = 'You\'re clearly terrible at this game! You lost!' };
+            document.getElementById('buttons').style.visibility = 'hidden';
             const restartMsg = document.createElement('h3');
             restartMsg.classList.add('restartMsg');
             restartMsg.textContent = 'Want to play again?';
@@ -115,9 +114,13 @@ btns.forEach((button) => {
             scoreMessage.appendChild(restartBtn);
             restartBtn.addEventListener('click', () => {
                 playerScoreCount.textContent = `Player:`;
+                playerScore = 0;
                 compScoreCount.textContent = `Computer:`;
+                computerScore = 0;
                 content.textContent = '';
                 restartMsg.textContent = '';
+                scoreMessage.removeChild(restartBtn);
+                document.getElementById('buttons').style.visibility = 'visible';
             });
         }
     })});
